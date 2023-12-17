@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import authService from '../services/auth';
 
 function SignUp() {
 
@@ -11,12 +12,15 @@ function SignUp() {
         e.preventDefault();
 
         const user = {
-            name,
-            email,
-            password
+            name: name,
+            username: email,
+            password: password
         }
 
         console.log(user);
+
+        // call the signup service
+        authService.signup(user);
 
         setName('');
         setEmail('');
